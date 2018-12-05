@@ -31,9 +31,9 @@ pipeline{
             steps{
                sh '''project_name=llh-swb-tomcat
                      webapp_name=main
-                     pid=`ps -ef | grep llh| grep -v grep | cut -c 9-15`
+                    pid=`ps -ef|grep java|grep llh|gawk \'$0!~/grep/ {print $2}\'|tr -s \'\\n\'\'\'`
                      echo $pid
-                    if [ "$pid" ]; then ps -ef | grep llh| grep -v grep | cut -c 11-15 | xargs kill -s 9; fi
+                    if [ "$pid" ]; then ps -ef|grep java|grep llh|gawk \'$0!~/grep/ {print $2}\'|tr -s \'\\n\'\'\' | xargs kill -s 9; fi
                     sleep 2s
                     rm -rf /home/llh-swb-tomcat/webapps/zfcg
                     rm -rf /home/llh-swb-tomcat/webapps/zfcg/zfcg.war
