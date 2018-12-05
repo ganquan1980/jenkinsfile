@@ -33,7 +33,7 @@ pipeline{
                      webapp_name=main
                      pid=`ps -ef | grep llh| grep -v grep | cut -c 9-15`
                      echo $pid
-                    if [ "$pid" ]; then ps -ef | grep llh| grep -v grep | cut -c 9-15 | xargs kill -s 9; fi
+                    if [ "$pid" ]; then ps -ef | grep llh| grep -v grep | cut -c 11-15 | xargs kill -s 9; fi
                     sleep 2s
                     rm -rf /home/llh-swb-tomcat/webapps/zfcg
                     rm -rf /home/llh-swb-tomcat/webapps/zfcg/zfcg.war
