@@ -43,6 +43,7 @@ pipeline{
                     JENKINS_NODE_COOKIE=dontKillMe
                     nohup /home/llh-swb-tomcat/bin/startup.sh&
                     sleep 10s
+                    unset pid
                     '''
             }
         }
