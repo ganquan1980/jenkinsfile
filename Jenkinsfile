@@ -31,7 +31,7 @@ pipeline{
             steps{
                sh '''project_name=llh-swb-tomcat
                      webapp_name=main
-                     pid=`ps -ef|grep java|grep llh|gawk \'$0!~/grep/ {print $2}\'|tr -s \'\\n\'\'\'`
+                     pid=`ps -ef|grep java|grep llh|gawk '$0!~/grep/ {print $2}'|tr -s '\n'''`
                      echo $pid
                     if [ "$pid" ]; then ps -ef | grep llh| grep -v grep | cut -c 9-15 | xargs kill -s 9; fi
                     sleep 2s
