@@ -1,4 +1,4 @@
-pipeline {
+pipeline{
     agent{
         node{
             label '10.1.71.52'
@@ -48,10 +48,10 @@ pipeline {
         }
         stage('send email'){
             steps{
-               mail bcc: '', body: '''ÉÌÎñ²¿ÏîÄ¿ÏµÍ³×Ô¶¯²¿ÊğÍê³É
-                ²¿Êğ°æ±¾ºÅBuild # $BUILD_NUMBER
-                ²¿ÊğµØÖ·Îª:https://
-                ²¿Êğ×´Ì¬Îª:$BUILD_STATUS''', cc: '', from: 'xajq@163.com', replyTo: '', subject: 'ÉÌÎñ²¿ÏîÄ¿×Ô¶¯²¿Êğ', to: 'ganq@glodon.com'
+               mail bcc: '', body: '''å•†åŠ¡éƒ¨é¡¹ç›®ç³»ç»Ÿè‡ªåŠ¨éƒ¨ç½²å®Œæˆ
+                éƒ¨ç½²ç‰ˆæœ¬å·Build # $BUILD_NUMBER
+                éƒ¨ç½²åœ°å€ä¸º:https://
+                éƒ¨ç½²çŠ¶æ€ä¸º:$BUILD_STATUS''', cc: '', from: 'xajq@163.com', replyTo: '', subject: 'å•†åŠ¡éƒ¨é¡¹ç›®è‡ªåŠ¨éƒ¨ç½²', to: 'ganq@glodon.com'
             }
         }
     }
