@@ -1,9 +1,29 @@
-pipeline {
-    agent none
+pipeline{
+    agent{
+        node{
+            label '192.168.8.184'
+            }
+        }
+    tools{maven 'apache-maven-3.3.9'} 
     stages{
-        stage('test'){
+         stage('replace file and restart tomcat'){
             steps{
-                echo 'Hello World'
+               sh '''project_name=llh-swb-tomcat
+                     webapp_name=main
+                     pid=`ps -ef | grep llh| grep -v grep | cut -c 9-15`
+                     echo $pid
+                    if [ "$pid" ]; then ps -ef | grep llh| grep -v grep | cut -c 11-15 | xargs kill -s 9; fi
+                    sleep 2s
+                    rm -rf /home/llh-swb-tomcat/webapps/zfcg
+                    rm -rf /home/llh-swb-tomcat/webapps/zfcg/zfcg.war
+                    mv ./target/gbp-swb.war ./target/zfcg.war
+                    cp ./target/zfcg.war /home/llh-swb-tomcat/webapps/
+            
+                    JENKINS_NODE_COOKIE=dontKillMe
+                    nohup /home/llh-swb-tomcat/bin/startup.sh&
+                    sleep 10s
+                    unset pid
+                    '''
             }
         }
     }
