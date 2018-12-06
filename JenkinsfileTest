@@ -16,7 +16,7 @@ pipeline{
         success{
             emailext (
                 subject: "'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常",
-                body: ''''${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常''',
+                body: """'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常""",
                 to: 'ganq@glodon.com'
             )
         }
