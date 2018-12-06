@@ -16,7 +16,11 @@ pipeline{
         success{
             emailext (
                 subject: "'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常",
-                body: """'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常""",
+                body: """'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常
+                商务部项目系统自动部署完成
+                部署版本号Build # $BUILD_NUMBER
+                部署地址为:https://
+                部署状态为:${env.BUILD_STATUS}""",
                 to: 'ganq@glodon.com'
             )
         }
