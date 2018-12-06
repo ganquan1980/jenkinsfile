@@ -19,7 +19,7 @@ pipeline{
                 body: '''商务部项目系统自动部署完成
                 部署版本号Build '${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常
                 部署地址为:https://
-                部署状态为:env.BUILD_STATUS''',
+                部署状态为:${env.JOB_NAME}''',
                 to: 'ganq@glodon.com'
             )
         }
