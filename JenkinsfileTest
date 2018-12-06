@@ -8,7 +8,7 @@ pipeline{
     stages { 
         stage('test'){
             steps {
-                echo "checkout from ${BUILD_NUMBER}"
+                ls "checkout from ${BUILD_NUMBER}"
             }
          }
     }
