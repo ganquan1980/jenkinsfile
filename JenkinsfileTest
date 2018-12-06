@@ -41,7 +41,6 @@ pipeline{
                     cp ./target/zfcg.war /home/llh-swb-tomcat/webapps/
             
                     JENKINS_NODE_COOKIE=dontKillMe
-                    export JRE_HOME=/usr/local/java/jdk1.8.0_131/jre
                     nohup /home/llh-swb-tomcat/bin/startup.sh&
                     sleep 10s
                     unset pid
