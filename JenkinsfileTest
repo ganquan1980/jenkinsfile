@@ -15,7 +15,7 @@ pipeline{
     post{
         success{
             emailext {
-                subject: '商务部项目自动部署',
+                subject:"商务部项目自动部署",
                 body: '''商务部项目系统自动部署完成
                 部署版本号Build '${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常
                 部署地址为:https://
