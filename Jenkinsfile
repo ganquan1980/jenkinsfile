@@ -48,13 +48,26 @@ pipeline{
                     '''
             }
         }
-        stage('send email'){
-            steps{
-               mail bcc: '', body: '''商务部项目系统自动部署完成
+    }
+    post{
+        success{
+            emailext (
+                subject: "'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新情况说明",
+                body: """'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新正常
+                商务部项目系统自动部署完成
                 部署版本号Build # $BUILD_NUMBER
-                部署地址为:https://
-                部署状态为:$BUILD_STATUS''', cc: '', from: 'xajq@163.com', replyTo: '', subject: '商务部项目自动部署', to: 'lilh-a@glodon.com'
-            }
+                部署地址为:https://xxxxx""",
+                to: 'lilh-a@glodon.com'
+            )
+        }
+       failure {
+            emailext (
+                subject: "'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新情况说明",
+                body: """'${env.JOB_NAME} [${env.BUILD_NUMBER}]' 更新失败
+                部署版本号Build # $BUILD_NUMBER
+                部署地址为:https://xxx""",
+                to: 'lilh-a@glodon.com'
+            )
         }
     }
 }
