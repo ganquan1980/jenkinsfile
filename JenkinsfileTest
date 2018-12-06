@@ -9,7 +9,7 @@ pipeline{
         stage('send email'){
             steps{
                mail bcc: '', body: '''商务部项目系统自动部署完成
-                部署版本号Build # ${BUILD_NUMBER}
+                部署版本号Build # ${env.BUILD_NUMBER}
                 部署地址为:https://
                 部署状态为:env.BUILD_STATUS''', cc: '', from: 'xajq@163.com', replyTo: '', subject: '商务部项目自动部署', to: 'ganq@glodon.com'
             }
